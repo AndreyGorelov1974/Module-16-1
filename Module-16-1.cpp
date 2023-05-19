@@ -14,3 +14,54 @@
 Для отображения числа с нужной точностью воспользуйтесь функцией std::sprintf(speed_str, "%.1f", speed_value);
 где speed_str — строка, в которую функция sprintf «печатает» значение скорости (speed_value) с одним знаком после десятичной точки (%.1f).*/
 
+#include <iostream>
+
+//точность сравнения
+const float epsilon = 0.01f;
+//максимальнаяскорость машины
+const float maxSpeed = 150.0f;
+
+int main()
+{
+	//начальная скорость
+	float currentSpeed = 0.0f;
+	//изменение скорости
+	float deltaSpeed = 0.0f;
+
+	
+	//основной цикл продолжается пока скорость не вернётсяк 0 с заданной точностью
+	do {
+		std::cout << "Current vehicle speed: " << currentSpeed << std::endl;
+		//ввод изменения скорости
+		std::cout << "Enter the vehicle speed change: ";
+		std::cin >> deltaSpeed;
+		currentSpeed += deltaSpeed;
+		//машина не может разогнатьсябыстрее 150 км/ч
+		if ((currentSpeed - maxSpeed) > epsilon) {
+			currentSpeed = maxSpeed;			
+		}
+	
+			//если элементов меньше sizeArray вставляем за последним значащим элементом
+			
+			//если больше вставляем в конец массива
+			else  if (arr[sizeArray - 1] >= element) {
+				arr[sizeArray - 1] = element;
+				//инициализируем индекс для сортировки
+				int indexSort = sizeArray - 1;
+				//двигаемего к началу на своё место по порядку среди значащих элементов
+				while ((indexSort > 0) && (arr[indexSort] < arr[indexSort - 1])) {
+					std::swap(arr[indexSort], arr[indexSort - 1]);
+					--indexSort;
+				}
+			}
+		}
+		//вывод отсортированного массива
+		for (int i = 0; i < sizeArray; ++i)
+		{
+			std::cout << arr[i] << " ";
+		}
+		std::cout << std::endl;
+		//ввод следующего элемента
+		std::cout << "Input numbers: ";
+	} while (currentSpeed > epsilon)
+}
