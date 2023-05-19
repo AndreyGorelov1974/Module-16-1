@@ -15,6 +15,7 @@
 где speed_str — строка, в которую функция sprintf «печатает» значение скорости (speed_value) с одним знаком после десятичной точки (%.1f).*/
 
 #include <iostream>
+#pragma warning(disable : 4996)
 
 //точность сравнения
 const float epsilon = 0.01f;
@@ -35,6 +36,8 @@ int main()
 	do {
 		std::sprintf(speedStr, "%.1f", currentSpeed);
 		std::cout << "Current vehicle speed: " << speedStr << std::endl;
+		std::cout << "True speed: " << currentSpeed << std::endl;
+
 		//ввод изменения скорости
 		std::cout << "Enter the vehicle speed change: ";
 		std::cin >> deltaSpeed;
@@ -44,4 +47,5 @@ int main()
 			currentSpeed = maxSpeed;			
 		}	
 	} while (currentSpeed > epsilon);
+	std::cout << "The trip is over!";
 }
