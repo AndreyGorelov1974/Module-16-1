@@ -27,41 +27,21 @@ int main()
 	float currentSpeed = 0.0f;
 	//изменение скорости
 	float deltaSpeed = 0.0f;
+	//строка для вывода скорости
+	char speedStr[4];
 
 	
 	//основной цикл продолжается пока скорость не вернётсяк 0 с заданной точностью
 	do {
-		std::cout << "Current vehicle speed: " << currentSpeed << std::endl;
+		std::sprintf(speedStr, "%.1f", currentSpeed);
+		std::cout << "Current vehicle speed: " << speedStr << std::endl;
 		//ввод изменения скорости
 		std::cout << "Enter the vehicle speed change: ";
 		std::cin >> deltaSpeed;
 		currentSpeed += deltaSpeed;
-		//машина не может разогнатьсябыстрее 150 км/ч
+		//машина не может разогнаться быстрее 150 км/ч
 		if ((currentSpeed - maxSpeed) > epsilon) {
 			currentSpeed = maxSpeed;			
-		}
-	
-			//если элементов меньше sizeArray вставляем за последним значащим элементом
-			
-			//если больше вставляем в конец массива
-			else  if (arr[sizeArray - 1] >= element) {
-				arr[sizeArray - 1] = element;
-				//инициализируем индекс для сортировки
-				int indexSort = sizeArray - 1;
-				//двигаемего к началу на своё место по порядку среди значащих элементов
-				while ((indexSort > 0) && (arr[indexSort] < arr[indexSort - 1])) {
-					std::swap(arr[indexSort], arr[indexSort - 1]);
-					--indexSort;
-				}
-			}
-		}
-		//вывод отсортированного массива
-		for (int i = 0; i < sizeArray; ++i)
-		{
-			std::cout << arr[i] << " ";
-		}
-		std::cout << std::endl;
-		//ввод следующего элемента
-		std::cout << "Input numbers: ";
-	} while (currentSpeed > epsilon)
+		}	
+	} while (currentSpeed > epsilon);
 }
